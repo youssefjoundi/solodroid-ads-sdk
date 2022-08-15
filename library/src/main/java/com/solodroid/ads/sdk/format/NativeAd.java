@@ -3,12 +3,14 @@ package com.solodroid.ads.sdk.format;
 import static com.solodroid.ads.sdk.util.Constant.ADMOB;
 import static com.solodroid.ads.sdk.util.Constant.AD_STATUS_ON;
 import static com.solodroid.ads.sdk.util.Constant.APPLOVIN;
+import static com.solodroid.ads.sdk.util.Constant.APPLOVIN_DISCOVERY;
 import static com.solodroid.ads.sdk.util.Constant.APPLOVIN_MAX;
 import static com.solodroid.ads.sdk.util.Constant.FAN;
 import static com.solodroid.ads.sdk.util.Constant.FAN_BIDDING_ADMOB;
 import static com.solodroid.ads.sdk.util.Constant.FAN_BIDDING_AD_MANAGER;
 import static com.solodroid.ads.sdk.util.Constant.FAN_BIDDING_APPLOVIN_MAX;
 import static com.solodroid.ads.sdk.util.Constant.GOOGLE_AD_MANAGER;
+import static com.solodroid.ads.sdk.util.Constant.IRONSOURCE;
 import static com.solodroid.ads.sdk.util.Constant.NONE;
 import static com.solodroid.ads.sdk.util.Constant.STARTAPP;
 import static com.solodroid.ads.sdk.util.Constant.UNITY;
@@ -262,7 +264,7 @@ public class NativeAd {
                             Log.d(TAG, "Ad Manager Native Ad has been loaded");
                         }
                         break;
-
+                    case IRONSOURCE:
                     case FAN:
                         fanNativeAd = new com.facebook.ads.NativeAd(activity, fanNativeId);
                         NativeAdListener nativeAdListener = new NativeAdListener() {
@@ -421,7 +423,7 @@ public class NativeAd {
                             Log.d(TAG, "StartApp Native Ad has been loaded");
                         }
                         break;
-
+                    case APPLOVIN_DISCOVERY:
                     case APPLOVIN:
                     case APPLOVIN_MAX:
                     case FAN_BIDDING_APPLOVIN_MAX:
