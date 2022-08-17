@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 .setAdMobAppId(null)
                 .setStartappAppId(Constant.STARTAPP_APP_ID)
                 .setUnityGameId(Constant.UNITY_GAME_ID)
-                .setAppLovinSdkKey(getResources().getString(R.string.applovin_sdk_key))
+                .setAppLovinSdkKey("a")
                 .setIronSourceAppKey(Constant.IRONSOURCE_APP_KEY)
                 .setDebug(BuildConfig.DEBUG)
                 .build();
