@@ -217,6 +217,7 @@ public class NativeAd {
                                         admobNativeAd.setNativeAd(NativeAd);
                                         admobNativeAd.setVisibility(View.VISIBLE);
                                         nativeAdViewContainer.setVisibility(View.VISIBLE);
+
                                     })
                                     .withAdListener(new AdListener() {
                                         @Override

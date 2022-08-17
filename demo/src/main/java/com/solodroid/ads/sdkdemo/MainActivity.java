@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 .setAppLovinInterstitialZoneId(Constant.APPLOVIN_INTERSTITIAL_ZONE_ID)
                 .setIronSourceInterstitialId(Constant.IRONSOURCE_INTERSTITIAL_ID)
                 .setInterval(1)
-                .setAdcloser(() -> show())
                 .build();
     }
 
@@ -93,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showInterstitialAd() {
-        interstitialAd.show();
+        interstitialAd.show(() -> show());
     }
 
     private void loadNativeAd() {
