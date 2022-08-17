@@ -860,6 +860,8 @@ public class InterstitialAd {
                     }
                     counter = 1;
                 } else {
+//                    Toast.makeText(activity, "do job either counter is not yet", Toast.LENGTH_SHORT).show();
+                    adCloseListener.onAdClosed();
                     counter++;
                 }
                 Log.d(TAG, "Current counter : " + counter);
