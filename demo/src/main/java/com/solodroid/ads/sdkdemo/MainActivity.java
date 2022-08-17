@@ -2,6 +2,7 @@ package com.solodroid.ads.sdkdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -83,7 +84,12 @@ public class MainActivity extends AppCompatActivity {
                 .setAppLovinInterstitialZoneId(Constant.APPLOVIN_INTERSTITIAL_ZONE_ID)
                 .setIronSourceInterstitialId(Constant.IRONSOURCE_INTERSTITIAL_ID)
                 .setInterval(1)
+                .setAdcloser(() -> show())
                 .build();
+    }
+
+    private void show(){
+        Toast.makeText(this, "new intertital", Toast.LENGTH_SHORT).show();
     }
 
     private void showInterstitialAd() {

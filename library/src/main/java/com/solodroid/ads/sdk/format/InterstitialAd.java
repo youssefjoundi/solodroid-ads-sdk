@@ -84,6 +84,7 @@ public class InterstitialAd {
         private String ironSourceInterstitialId = "";
         private int placementStatus = 1;
         private int interval = 3;
+        public AdCloseListener adCloseListener;
 
         private boolean legacyGDPR = false;
 
@@ -170,6 +171,15 @@ public class InterstitialAd {
             return this;
         }
 
+        public Builder setAdcloser(final AdCloseListener adCloseListener){
+            this.adCloseListener = adCloseListener;
+            return this;
+        }
+
+        public interface AdCloseListener {
+            void onAdClosed();
+        }
+
         public void loadInterstitialAd() {
             if (adStatus.equals(AD_STATUS_ON) && placementStatus != 0) {
                 switch (adNetwork) {
@@ -182,6 +192,7 @@ public class InterstitialAd {
                                 adMobInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
                                     @Override
                                     public void onAdDismissedFullScreenContent() {
+                                        adCloseListener.onAdClosed();
                                         loadInterstitialAd();
                                     }
 
@@ -720,6 +731,7 @@ public class InterstitialAd {
                         case ADMOB:
                         case FAN_BIDDING_ADMOB:
                             if (adMobInterstitialAd != null) {
+                                this.adCloseListener = adCloseListener;
                                 adMobInterstitialAd.show(activity);
                                 Log.d(TAG, "admob interstitial not null");
                             } else {
