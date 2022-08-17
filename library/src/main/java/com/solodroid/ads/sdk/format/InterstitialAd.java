@@ -344,6 +344,7 @@ public class InterstitialAd {
                     case APPLOVIN:
                     case APPLOVIN_MAX:
                     case FAN_BIDDING_APPLOVIN_MAX:
+                        Toast.makeText(activity, "Here in load", Toast.LENGTH_SHORT).show();
                         maxInterstitialAd = new MaxInterstitialAd(appLovinInterstitialId, activity);
                         maxInterstitialAd.setListener(new MaxAdListener() {
                             @Override
@@ -358,6 +359,7 @@ public class InterstitialAd {
 
                             @Override
                             public void onAdHidden(MaxAd ad) {
+                                loadInterstitialAd();
                                 adCloseListener.onAdClosed();
                                 maxInterstitialAd.loadAd();
                             }
