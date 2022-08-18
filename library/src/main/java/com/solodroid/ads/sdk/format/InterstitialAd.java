@@ -735,8 +735,6 @@ public class InterstitialAd {
                         break;
 
                     case NONE:
-                        Toast.makeText(activity, "None ", Toast.LENGTH_SHORT).show();
-                        adCloseListener.onAdClosed();
                         break;
                 }
             }
