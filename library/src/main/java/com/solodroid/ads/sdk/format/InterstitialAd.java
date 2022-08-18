@@ -735,7 +735,7 @@ public class InterstitialAd {
                         break;
 
                     case NONE:
-                        //do nothing
+                        adCloseListener.onAdClosed();
                         break;
                 }
             }
