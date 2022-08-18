@@ -344,7 +344,6 @@ public class InterstitialAd {
                     case APPLOVIN:
                     case APPLOVIN_MAX:
                     case FAN_BIDDING_APPLOVIN_MAX:
-                        Toast.makeText(activity, "Here in load", Toast.LENGTH_SHORT).show();
                         maxInterstitialAd = new MaxInterstitialAd(appLovinInterstitialId, activity);
                         maxInterstitialAd.setListener(new MaxAdListener() {
                             @Override
@@ -359,8 +358,8 @@ public class InterstitialAd {
 
                             @Override
                             public void onAdHidden(MaxAd ad) {
-                                loadInterstitialAd();
                                 adCloseListener.onAdClosed();
+                                loadMaxInterstitialAd();
                                 maxInterstitialAd.loadAd();
                             }
 
@@ -459,6 +458,50 @@ public class InterstitialAd {
                         break;
                 }
             }
+        }
+
+        public void loadMaxInterstitialAd(){
+            maxInterstitialAd = new MaxInterstitialAd(appLovinInterstitialId, activity);
+            maxInterstitialAd.setListener(new MaxAdListener() {
+                @Override
+                public void onAdLoaded(MaxAd ad) {
+                    retryAttempt = 0;
+                    Log.d(TAG, "AppLovin Interstitial Ad loaded...");
+                }
+
+                @Override
+                public void onAdDisplayed(MaxAd ad) {
+                }
+
+                @Override
+                public void onAdHidden(MaxAd ad) {
+                    adCloseListener.onAdClosed();
+                    maxInterstitialAd.loadAd();
+                }
+
+                @Override
+                public void onAdClicked(MaxAd ad) {
+
+                }
+
+                @Override
+                public void onAdLoadFailed(String adUnitId, MaxError error) {
+                    retryAttempt++;
+                    long delayMillis = TimeUnit.SECONDS.toMillis((long) Math.pow(2, Math.min(6, retryAttempt)));
+                    new Handler().postDelayed(() -> maxInterstitialAd.loadAd(), delayMillis);
+                    loadBackupInterstitialAd();
+                    Log.d(TAG, "failed to load AppLovin Interstitial");
+                }
+
+                @Override
+                public void onAdDisplayFailed(MaxAd ad, MaxError error) {
+                    adCloseListener.onAdClosed();
+                    maxInterstitialAd.loadAd();
+                }
+            });
+
+            // Load the first ad
+            maxInterstitialAd.loadAd();
         }
 
         public void loadBackupInterstitialAd() {
