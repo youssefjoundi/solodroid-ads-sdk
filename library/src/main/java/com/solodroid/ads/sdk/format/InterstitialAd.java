@@ -735,6 +735,7 @@ public class InterstitialAd {
                         break;
 
                     case NONE:
+                        Toast.makeText(activity, "None ", Toast.LENGTH_SHORT).show();
                         adCloseListener.onAdClosed();
                         break;
                 }
@@ -861,7 +862,7 @@ public class InterstitialAd {
                     counter = 1;
                 } else {
 //                    Toast.makeText(activity, "do job either counter is not yet", Toast.LENGTH_SHORT).show();
-                    adCloseListener.onAdClosed();
+                    this.adCloseListener = adCloseListener;
                     counter++;
                 }
                 Log.d(TAG, "Current counter : " + counter);
