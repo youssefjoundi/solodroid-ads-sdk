@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 .setDarkTheme(false)
                 .build();
     }
-    private int counter = 0;
     private void loadInterstitialAd() {
         interstitialAd = new InterstitialAd.Builder(this)
                 .setAdStatus(Constant.AD_STATUS)
@@ -85,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 .setIronSourceInterstitialId(Constant.IRONSOURCE_INTERSTITIAL_ID)
                 .setInterval(3)
                 .build();
-        counter++;
-        Toast.makeText(this, "counter " + counter + " !", Toast.LENGTH_SHORT).show();
     }
 
     private void show(){

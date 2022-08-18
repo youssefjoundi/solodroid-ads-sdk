@@ -433,7 +433,7 @@ public class InterstitialAd {
                             @Override
                             public void onInterstitialAdClosed() {
                                 Log.d(TAG, "onInterstitialAdClosed");
-                                adCloseListener.onAdClosed();
+                                loadBackupInterstitialAd();
                                 loadInterstitialAd();
                             }
 
